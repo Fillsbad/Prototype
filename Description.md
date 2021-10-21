@@ -257,7 +257,8 @@ tokenized = MySentences('/home/fillsbad/Jupyter/Texts/W2V')
 model = Word2Vec(tokenized, min_count = 5, vector_size = 300, window = 7, workers = 4, sg = 1)
 ```
 #### Checking the number of items in the model vocabulary - optional
-```print(len(model.wv))
+```
+print(len(model.wv))
 ```
 #### Saving the model as a .bin file
 ```
