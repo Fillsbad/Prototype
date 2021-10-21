@@ -24,7 +24,7 @@ from gensim.models.phrases import Phraser
 import multiprocessing
 ```
 ## First cleaning process
-##### Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
+#### Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
 ```with open("/home/fillsbad/Jupyter/Texts/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Articles", "*.txt"))
     for file_path in tqdm(file_list):
@@ -48,7 +48,7 @@ However, if personality signifies the totality of a person, it is clear that the
 
 Earlier theories of personality psychology counted religious attitude, political opinion, citizenship, and aesthetic concern as factors of the personality.
 ```
-## Removing all characters from a text, except a-z, A-Z, &Δ*öüóőúűáéäí-
+#### Removing all characters from a text, except a-z, A-Z, &Δ*öüóőúűáéäí-
 ```filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
 outfile = open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt', 'w')
 
