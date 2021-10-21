@@ -67,13 +67,15 @@ with open(filepath) as fp:
         print(' '.join(map(str, clean_sentences)), file = outfile)
 ```
 ##### Output example:
-```After the triumph of the mechanistic paradigm in the modern period there always have been critics against the mechanical view especially in the domains of life sciences and moral sciences such as biology psychology psychiatry and sociology as well as philosophy 
+```The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics but also in biology and social sciences long before 
 
-The famous early reaction against the mechanism is vitalism 
+One reason why psychology is indifferent in the system theories would concern the objective of psychology 
 
-It is well known that vitalism soon found less support because its concept of nonphysical vital energy is opposed to physical laws and considered to be occult 
+If the objective of psychology is to control someone s behavior so that even if a person is an organized whole that systems theory describes then a psychologist does not need to pay attention to the total existence of a person but only to some aspect that the psychologists want to control 
 
-In the th century the system theories such as von Bertalanffy s general systems theory and Wiener s cybernetics provide a strong alternative view to understand the teleological behaviors of living beings 
+For example in contemporary personality psychology it is claimed that the Big Five factors openness conscientiousness extroversion agreeableness neuroticism have been discovered to define human personality 
 
-Although the theories of Bertalanffy and Wiener are to understand dynamic equilibrium system more developed system theories which appeared after s such as self-organization theory and Autopoiesis of Maturana and Varela to understand dynamic non-equilibrium system which develops and changes as time goes on Maturana and Varela 
+However if personality signifies the totality of a person it is clear that these factors are not sufficient to understand the characteristic of a person s behaviors 
+
+Earlier theories of personality psychology counted religious attitude political opinion citizenship and aesthetic concern as factors of the personality
 ```
