@@ -108,8 +108,8 @@ However if personality signifies the totality of a person it is clear that these
 Earlier theories of personality psychology counted religious attitude political opinion citizenship and aesthetic concern as factors of the personality.
 ```
 ## Connecting multi-word expressions in the text, based on the psychology books collected
-In this part I will not include the output examples as they are the cleaning process is the same as before
-#### Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
+In this part I will not include the output examples as the cleaning process is the same as before
+#### (BOOK CLEANING) Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
 ```with open("/home/fillsbad/Jupyter/Texts/Training/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Books", "*.txt"))
     for file_path in tqdm(file_list):
@@ -119,3 +119,34 @@ In this part I will not include the output examples as they are the cleaning pro
             for t in tokens:
                 print(t.strip(), file = out)
  ```               
+#### (BOOK CLEANING) Removing all characters from a text, except a-z, A-Z, &Δ*öüóőúűáéäí-
+```filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
+outfile = open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt', 'w')
+
+with open(filepath) as fp:
+    for line in tqdm(fp):
+        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+        tok_sentences = tokenizer.tokenize(line)
+        def sentence_cleaner(sent):
+            clean = re.sub("[^a-zA-Z&Δ*öüóőúűáéäí-]"," ", sent)
+            words = re.sub(' +', ' ', clean)
+            return words
+        clean_sentences = []
+        for cleanable_sentence in tok_sentences:
+            if len(cleanable_sentence) > 0:
+                clean_sentences.append(sentence_cleaner(cleanable_sentence))
+        print(' '.join(map(str, clean_sentences)), file = outfile)
+```
+##### (BOOK CLEANING) A little extra cleaning and putting a '.' at the end of every line/sentence
+```with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
+    with open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt') as f:
+        for li in tqdm(f):
+            line = li.replace(' rst ',' ')
+            line = li.replace(' st ',' ')
+            line = li.replace(' nd ',' ')
+            line = li.replace(' rd ',' ')
+            line = li.replace(' th ',' ')
+            line = li.replace(' s ',' ')
+            line = li.replace(' \n','.\n')
+            print(line.strip(), file = out)
+```
