@@ -1,5 +1,5 @@
 # W2V Prototype
-This is a quick way of taking any number of .txt files from a folder (here about 13.5 GB), cleaning them, connecting the multi-word phrases in them and creating a W2V model from them.
+This is a quick way of taking any number of .txt files from a folder (here about 13.5 GB), cleaning them, connecting the multi-word phrases in them based on a number of books (here about 5.4 GB) and creating a W2V model from them.
 
 ## Importing libraries
 ```
@@ -47,18 +47,8 @@ For example, in contemporary personality psychology, it is claimed that âth
 However, if personality signifies the totality of a person, it is clear that these factors are not sufficient to understand the characteristic of a personâs behaviors.
 
 Earlier theories of personality psychology counted religious attitude, political opinion, citizenship, and aesthetic concern as factors of the personality.
-
-These factors surely play very important roles in our personality; they are often decisive factors for our behaviors, but they are eliminated in the course of the âdevelopmentâ of personality psychology.
-
-The reason of the elimination is that psychology does not concern itself with these factors, and does not have the intention to control these aspects of our life.
-
-On the other hand, psychology is interested in Big Five factors and tries to intervene in these five aspects of oneâs life.
-
-Psychology is interventionistâit tries to intervene in a personâs life and change its behavior for some purpose.
-
-That is why psychology persists in causal explanation.
 ```
-## Deleting all characters from a text except a-z, A-Z, &Δ*öüóőúűáéäí-
+## Removing all characters from a text, except a-z, A-Z, &Δ*öüóőúűáéäí-
 ```filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
 outfile = open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt', 'w')
 
@@ -75,4 +65,15 @@ with open(filepath) as fp:
             if len(cleanable_sentence) > 0:
                 clean_sentences.append(sentence_cleaner(cleanable_sentence))
         print(' '.join(map(str, clean_sentences)), file = outfile)
+```
+##### Output example:
+```After the triumph of the mechanistic paradigm in the modern period there always have been critics against the mechanical view especially in the domains of life sciences and moral sciences such as biology psychology psychiatry and sociology as well as philosophy 
+
+The famous early reaction against the mechanism is vitalism 
+
+It is well known that vitalism soon found less support because its concept of nonphysical vital energy is opposed to physical laws and considered to be occult 
+
+In the th century the system theories such as von Bertalanffy s general systems theory and Wiener s cybernetics provide a strong alternative view to understand the teleological behaviors of living beings 
+
+Although the theories of Bertalanffy and Wiener are to understand dynamic equilibrium system more developed system theories which appeared after s such as self-organization theory and Autopoiesis of Maturana and Varela to understand dynamic non-equilibrium system which develops and changes as time goes on Maturana and Varela 
 ```
