@@ -150,3 +150,22 @@ with open(filepath) as fp:
             line = li.replace(' \n','.\n')
             print(line.strip(), file = out)
 ```
+#### Tokenizing the training text - in this case, a collection of 4500+ psychology books - so we can train the gensim Phrases model
+```with open('/home/fillsbad/Jupyter/Texts/Training/cleaned_books_th.txt') as inf, open('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt', 'w') as out:
+    for line in tqdm(inf):
+        line = nltk.sent_tokenize(line)
+        print(line, file = out)
+```
+#### Output example:
+```['Three parts follow each of these x Preface rst-person accounts']
+
+['The chapters in each section are written by authorities selected for their knowledge in the eld of military psychology sociology and other social sciences and shed light on the reality of life in the armed forces']
+
+['This set integrates the diverse in uences on the well-being and performance of military personnel by developing separate volumes that address different facets of military psychology']
+
+['By focusing on Military Performance the rst volume addresses the need to understand the determinants of how military personnel think react and behave on military operations']
+
+['Several of the chapters in Volume also have implications for the well-being of military personnel such as the consequences of killing how stress affects decision making and how sleep loss affects operational effectiveness']
+
+['Newly emerging issues in the armed forces are also discussed including the role of terrorism psychological operations and advances in optimizing cognition on the battle eld'
+```
