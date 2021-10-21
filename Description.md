@@ -243,3 +243,70 @@ with open(filepath) as fp:
 
 ['earlier theories personality psychology counted religious attitude political_opinion citizenship aesthetic concern factors personality']
 ```
+## Training the W2V model
+```class MySentences(object):
+    def __init__(self, dirname):
+        self.dirname = dirname
+ 
+    def __iter__(self):
+        for fname in os.listdir(self.dirname):
+            for line in tqdm(open(os.path.join(self.dirname, fname))):
+                yield line.split()                                
+tokenized = MySentences('/home/fillsbad/Jupyter/Texts/W2V')
+
+model = Word2Vec(tokenized, min_count = 5, vector_size = 300, window = 7, workers = 4, sg = 1)
+```
+#### Checking the number of items in the model vocabulary - optional
+```print(len(model.wv))
+```
+#### Saving the model as a .bin file
+```model.wv.save_word2vec_format('/home/fillsbad/Jupyter/Texts/model3.bin', binary = True)
+```
+#### Loading a model later
+```loaded_model = gensim.models.KeyedVectors.load_word2vec_format('/home/fillsbad/Jupyter/Texts/model3.bin', binary = True)
+```
+#### Checking the closest 40 expressions to the word happiness
+```loaded_model.most_similar(['happiness'], topn = 40)
+```
+#### Output example:
+```[("happiness']", 0.7802721858024597),
+ ("['happiness", 0.7136465907096863),
+ ('happi_ness', 0.7061863541603088),
+ ('happiness_and_well-being', 0.6933473944664001),
+ ('happiness_happiness', 0.6896741390228271),
+ ('levels_of_happiness', 0.6875686645507812),
+ ('happiness_and_satisfaction', 0.6841875314712524),
+ ('happiness_satisfaction', 0.6649748682975769),
+ ('overall_happiness', 0.6637284755706787),
+ ('subjective_well-being', 0.6610868573188782),
+ ('happiness_diener', 0.6535085439682007),
+ ('contentment_happiness', 0.6515305042266846),
+ ('subjective_wellbeing', 0.6508346796035767),
+ ("['world_database", 0.645182728767395),
+ ('pursuing_happiness', 0.6451472043991089),
+ ('unhappiness', 0.6449677348136902),
+ ('life-satisfaction', 0.6441795825958252),
+ ('hap_piness', 0.6411221027374268),
+ ('contentment', 0.6408823132514954),
+ ('life_satisfaction', 0.6402313709259033),
+ ('swb', 0.6388760209083557),
+ ('happiness_joy', 0.6366546750068665),
+ ('priority_in_public', 0.6363426446914673),
+ ('eudaimonia', 0.636114776134491),
+ ('eudamonic', 0.6352128386497498),
+ ('satisfaction_and_contentment', 0.6310755014419556),
+ ('kesebir_and_diener', 0.6306400895118713),
+ ('eudaemonia', 0.6298112273216248),
+ ('happiness_and_contentment', 0.629772961139679),
+ ('greater_happiness', 0.6233652830123901),
+ ('hedonic_and_eudemonic', 0.6232475638389587),
+ ('happiness_and_wellbeing', 0.622951865196228),
+ ('hedonic_well-being', 0.6216959357261658),
+ ('happiness_kahneman', 0.6205111742019653),
+ ('hedonic_happiness', 0.6204162836074829),
+ ('non-happiness', 0.6182316541671753),
+ ('satisfaction_diener', 0.6178640723228455),
+ ('veenhoven', 0.6172904372215271),
+ ("contentment']", 0.617216944694519),
+ ('chekola', 0.6160106658935547)]
+ ```
