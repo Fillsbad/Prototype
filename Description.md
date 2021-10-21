@@ -1,6 +1,8 @@
 # W2V Prototype
 This is a quick way of taking any number of .txt files from a folder (here about 13.5 GB), cleaning them, connecting the multi-word phrases in them based on a number of books (here about 5.4 GB) and creating a W2V model from them.
 
+It is important to note that all subparts of this process are printed into separate files, so they can be checked individually. To show how ceratain parts look like, I included an example output after every block of code.
+
 ## Importing libraries
 ```
 import nltk
@@ -78,4 +80,17 @@ For example in contemporary personality psychology it is claimed that the Big Fi
 However if personality signifies the totality of a person it is clear that these factors are not sufficient to understand the characteristic of a person s behaviors 
 
 Earlier theories of personality psychology counted religious attitude political opinion citizenship and aesthetic concern as factors of the personality
+```
+##### A little extra cleaning and putting a '.' at the end of every line/sentence
+```with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
+    with open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt') as f:
+        for li in tqdm(f):
+            line = li.replace(' rst ',' ')
+            line = li.replace(' st ',' ')
+            line = li.replace(' nd ',' ')
+            line = li.replace(' rd ',' ')
+            line = li.replace(' th ',' ')
+            line = li.replace(' s ',' ')
+            line = li.replace(' \n','.\n')
+            print(line.strip(), file = out)
 ```
