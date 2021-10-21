@@ -1,3 +1,1 @@
 # Prototype
-
-#Summary
