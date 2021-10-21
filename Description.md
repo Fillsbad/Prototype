@@ -260,13 +260,16 @@ model = Word2Vec(tokenized, min_count = 5, vector_size = 300, window = 7, worker
 ```print(len(model.wv))
 ```
 #### Saving the model as a .bin file
-```model.wv.save_word2vec_format('/home/fillsbad/Jupyter/Texts/model3.bin', binary = True)
+```
+model.wv.save_word2vec_format('/home/fillsbad/Jupyter/Texts/model3.bin', binary = True)
 ```
 #### Loading a model later
-```loaded_model = gensim.models.KeyedVectors.load_word2vec_format('/home/fillsbad/Jupyter/Texts/model3.bin', binary = True)
+```
+loaded_model = gensim.models.KeyedVectors.load_word2vec_format('/home/fillsbad/Jupyter/Texts/model3.bin', binary = True)
 ```
 #### Checking the closest 40 expressions to the word happiness
-```loaded_model.most_similar(['happiness'], topn = 40)
+```
+loaded_model.most_similar(['happiness'], topn = 40)
 ```
 #### Output example:
 ```[("happiness']", 0.7802721858024597),
