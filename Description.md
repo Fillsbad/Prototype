@@ -156,7 +156,7 @@ with open(filepath) as fp:
         line = nltk.sent_tokenize(line)
         print(line, file = out)
 ```
-#### Output example:
+##### Output example:
 ```['Three parts follow each of these x Preface rst-person accounts']
 
 ['The chapters in each section are written by authorities selected for their knowledge in the eld of military psychology sociology and other social sciences and shed light on the reality of life in the armed forces']
@@ -194,7 +194,7 @@ frozen_model.save('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
         for l in line:
             print(l, file = out)
 ```
-#### Output example:
+##### Output example:
 ```The problem is why psychology does_not seem to have so_much interest in system theories and why it persists in the machine paradigm or the linear_causal model as Kohler pointed_out while the ideas of systems theories have_already been_introduced not_only in the domain of engineering and robotics but_also in biology and social_sciences long before.
 
 One_reason why psychology is indifferent in the system theories would concern the objective of psychology.
@@ -230,7 +230,7 @@ with open(filepath) as fp:
                 no_sw_sentences.append(sentence_to_wordlist(raw_sentence))
         print(no_sw_sentences, file = outfile)
 ```
-#### Output example:
+##### Output example:
 ```['the problem psychology does_not seem so_much interest system theories persists machine paradigm linear_causal model kohler pointed_out ideas systems theories have_already been_introduced not_only domain engineering robotics but_also biology social_sciences long before']
 
 ['one_reason psychology indifferent system theories would concern objective psychology']
@@ -272,7 +272,7 @@ loaded_model = gensim.models.KeyedVectors.load_word2vec_format('/home/fillsbad/J
 ```
 loaded_model.most_similar(['happiness'], topn = 40)
 ```
-#### Output example:
+##### Output example:
 ```[("happiness']", 0.7802721858024597),
  ("['happiness", 0.7136465907096863),
  ('happi_ness', 0.7061863541603088),
