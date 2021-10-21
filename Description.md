@@ -27,7 +27,8 @@ import multiprocessing
 ```
 ## First cleaning process
 #### Taking every .txt file from a folder and printing them into one file, where all the sentences are in different lines
-```with open("/home/fillsbad/Jupyter/Texts/streamed.txt", 'w') as out:
+```
+with open("/home/fillsbad/Jupyter/Texts/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Articles", "*.txt"))
     for file_path in tqdm(file_list):
         with codecs.open(file_path, 'r', encoding = 'latin1') as f_input:
@@ -51,7 +52,8 @@ However, if personality signifies the totality of a person, it is clear that the
 Earlier theories of personality psychology counted religious attitude, political opinion, citizenship, and aesthetic concern as factors of the personality.
 ```
 #### Removing all characters from a text, except a-z, A-Z, &Δ*öüóőúűáéäí-
-```filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
+```
+filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
 outfile = open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt', 'w')
 
 with open(filepath) as fp:
@@ -69,7 +71,8 @@ with open(filepath) as fp:
         print(' '.join(map(str, clean_sentences)), file = outfile)
 ```
 ##### Output example:
-```The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics but also in biology and social sciences long before 
+```
+The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics but also in biology and social sciences long before 
 
 One reason why psychology is indifferent in the system theories would concern the objective of psychology 
 
@@ -82,7 +85,8 @@ However if personality signifies the totality of a person it is clear that these
 Earlier theories of personality psychology counted religious attitude political opinion citizenship and aesthetic concern as factors of the personality
 ```
 #### A little extra cleaning and putting a '.' at the end of every line/sentence
-```with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
+```
+with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
     with open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt') as f:
         for li in tqdm(f):
             line = li.replace(' rst ',' ')
@@ -95,7 +99,8 @@ Earlier theories of personality psychology counted religious attitude political 
             print(line.strip(), file = out)
 ```
 ##### Output example:
-```The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics but also in biology and social sciences long before.
+```
+The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics but also in biology and social sciences long before.
 
 One reason why psychology is indifferent in the system theories would concern the objective of psychology.
 
@@ -110,7 +115,8 @@ Earlier theories of personality psychology counted religious attitude political 
 ## Connecting multi-word expressions in the text, based on the psychology books collected
 In this part I will not include the output examples as the cleaning process is the same as before
 #### (BOOK CLEANING) Taking every .txt file from a folder and printing them into one file, where all the sentences are in different lines
-```with open("/home/fillsbad/Jupyter/Texts/Training/streamed.txt", 'w') as out:
+```
+with open("/home/fillsbad/Jupyter/Texts/Training/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Books", "*.txt"))
     for file_path in tqdm(file_list):
         with codecs.open(file_path, 'r', encoding = 'latin1') as f_input:
@@ -120,7 +126,8 @@ In this part I will not include the output examples as the cleaning process is t
                 print(t.strip(), file = out)
  ```               
 #### (BOOK CLEANING) Removing all characters from a text, except a-z, A-Z, &Δ*öüóőúűáéäí-
-```filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
+```
+filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
 outfile = open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt', 'w')
 
 with open(filepath) as fp:
@@ -138,7 +145,8 @@ with open(filepath) as fp:
         print(' '.join(map(str, clean_sentences)), file = outfile)
 ```
 #### (BOOK CLEANING) A little extra cleaning and putting a '.' at the end of every line/sentence
-```with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
+```
+with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
     with open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt') as f:
         for li in tqdm(f):
             line = li.replace(' rst ',' ')
@@ -151,13 +159,15 @@ with open(filepath) as fp:
             print(line.strip(), file = out)
 ```
 #### Tokenizing the training text - in this case, a collection of 4500+ psychology books - so we can train the gensim Phrases model
-```with open('/home/fillsbad/Jupyter/Texts/Training/cleaned_books_th.txt') as inf, open('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt', 'w') as out:
+```
+with open('/home/fillsbad/Jupyter/Texts/Training/cleaned_books_th.txt') as inf, open('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt', 'w') as out:
     for line in tqdm(inf):
         line = nltk.sent_tokenize(line)
         print(line, file = out)
 ```
 ##### Output example:
-```['Three parts follow each of these x Preface rst-person accounts']
+```
+['Three parts follow each of these x Preface rst-person accounts']
 
 ['The chapters in each section are written by authorities selected for their knowledge in the eld of military psychology sociology and other social sciences and shed light on the reality of life in the armed forces']
 
@@ -170,21 +180,24 @@ with open(filepath) as fp:
 ['Newly emerging issues in the armed forces are also discussed including the role of terrorism psychological operations and advances in optimizing cognition on the battle eld'
 ```
 #### Creating a Phrases model based on the training corpus, then freezing and saving it (by doing this process twice as seen below, we can connect not only the bigrams but also the 3 and sometimes the 4 word expressions as well)
-```sentences = Text8Corpus('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt')
+```
+sentences = Text8Corpus('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt')
 bigram = Phrases(sentences, min_count=1, threshold=1, connector_words=ENGLISH_CONNECTOR_WORDS)
 trigram = Phrases(bigram[sentences], min_count=1, threshold=1, connector_words=ENGLISH_CONNECTOR_WORDS)
 frozen_model = trigram.freeze()
 frozen_model.save('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
 ```
 #### Connecting the phrases with an underscore based on the frozen model we trained on the Books corpus
-```with open('/home/fillsbad/Jupyter/Texts/connected.txt', 'w') as out:
+```
+with open('/home/fillsbad/Jupyter/Texts/connected.txt', 'w') as out:
     model_reloaded = Phrases.load('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
     sentences = Text8Corpus('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt')
     for lines in tqdm(sentences):
         print(model_reloaded[lines], file = out)
 ```
 #### Transforming the text back into normal sentences - this is potentially the worst way to do this
-```with open('/home/fillsbad/Jupyter/Texts/connected.txt') as inf, open('/home/fillsbad/Jupyter/Texts/normal_again.txt', 'w') as out:
+```
+with open('/home/fillsbad/Jupyter/Texts/connected.txt') as inf, open('/home/fillsbad/Jupyter/Texts/normal_again.txt', 'w') as out:
     for line in tqdm(inf):
         line = line.replace('[','')
         line = line.replace("'",'')
@@ -195,7 +208,8 @@ frozen_model.save('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
             print(l, file = out)
 ```
 ##### Output example:
-```The problem is why psychology does_not seem to have so_much interest in system theories and why it persists in the machine paradigm or the linear_causal model as Kohler pointed_out while the ideas of systems theories have_already been_introduced not_only in the domain of engineering and robotics but_also in biology and social_sciences long before.
+```
+The problem is why psychology does_not seem to have so_much interest in system theories and why it persists in the machine paradigm or the linear_causal model as Kohler pointed_out while the ideas of systems theories have_already been_introduced not_only in the domain of engineering and robotics but_also in biology and social_sciences long before.
 
 One_reason why psychology is indifferent in the system theories would concern the objective of psychology.
 
@@ -210,7 +224,8 @@ Earlier theories of personality psychology counted religious attitude political_
 ## Checking if all the multi-word expressions we need to connect are indeed connected
 This part is unfinished, in the probable case, that not every words we we want to connect are connected, we will have to connect the rest ourselves (this is a short and relatively easy process)
 ## Finishing the cleaning process and transforming the text, so the W2V model can be created
-```filepath = '/home/fillsbad/Jupyter/Texts/normal_again.txt'
+```
+filepath = '/home/fillsbad/Jupyter/Texts/normal_again.txt'
 outfile = open('/home/fillsbad/Jupyter/Texts/W2V/no_sw.txt', 'w')
 
 with open(filepath) as fp:
@@ -231,7 +246,8 @@ with open(filepath) as fp:
         print(no_sw_sentences, file = outfile)
 ```
 ##### Output example:
-```['the problem psychology does_not seem so_much interest system theories persists machine paradigm linear_causal model kohler pointed_out ideas systems theories have_already been_introduced not_only domain engineering robotics but_also biology social_sciences long before']
+```
+['the problem psychology does_not seem so_much interest system theories persists machine paradigm linear_causal model kohler pointed_out ideas systems theories have_already been_introduced not_only domain engineering robotics but_also biology social_sciences long before']
 
 ['one_reason psychology indifferent system theories would concern objective psychology']
 
@@ -274,7 +290,8 @@ loaded_model = gensim.models.KeyedVectors.load_word2vec_format('/home/fillsbad/J
 loaded_model.most_similar(['happiness'], topn = 40)
 ```
 ##### Output example:
-```[("happiness']", 0.7802721858024597),
+```
+[("happiness']", 0.7802721858024597),
  ("['happiness", 0.7136465907096863),
  ('happi_ness', 0.7061863541603088),
  ('happiness_and_well-being', 0.6933473944664001),
