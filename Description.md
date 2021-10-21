@@ -169,10 +169,41 @@ with open(filepath) as fp:
 
 ['Newly emerging issues in the armed forces are also discussed including the role of terrorism psychological operations and advances in optimizing cognition on the battle eld'
 ```
-#### Creating a Phrases model based on the training corpus, then freezing and saving it (by doing this process twice as seen below, we connect not only the bigrams but also the 3 and sometimes the 4 word expressions as well)
+#### Creating a Phrases model based on the training corpus, then freezing and saving it (by doing this process twice as seen below, we can connect not only the bigrams but also the 3 and sometimes the 4 word expressions as well)
 ```sentences = Text8Corpus('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt')
 bigram = Phrases(sentences, min_count=1, threshold=1, connector_words=ENGLISH_CONNECTOR_WORDS)
 trigram = Phrases(bigram[sentences], min_count=1, threshold=1, connector_words=ENGLISH_CONNECTOR_WORDS)
 frozen_model = trigram.freeze()
 frozen_model.save('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
+```
+#### Connecting the phrases with an underscore based on the frozen model we trained on the Books corpus
+```with open('/home/fillsbad/Jupyter/Texts/connected.txt', 'w') as out:
+    model_reloaded = Phrases.load('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
+    sentences = Text8Corpus('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt')
+    for lines in tqdm(sentences):
+        print(model_reloaded[lines], file = out)
+```
+#### Transforming the text back into normal sentences - this is potentially the worst way to do this
+```with open('/home/fillsbad/Jupyter/Texts/connected.txt') as inf, open('/home/fillsbad/Jupyter/Texts/normal_again.txt', 'w') as out:
+    for line in tqdm(inf):
+        line = line.replace('[','')
+        line = line.replace("'",'')
+        line = line.replace(']','')
+        line = line.replace(',','')
+        line = nltk.sent_tokenize(line)
+        for l in line:
+            print(l, file = out)
+```
+#### Output example:
+```The problem is why psychology does_not seem to have so_much interest in system theories and why it persists in the machine paradigm or the linear_causal model as Kohler pointed_out while the ideas of systems theories have_already been_introduced not_only in the domain of engineering and robotics but_also in biology and social_sciences long before.
+
+One_reason why psychology is indifferent in the system theories would concern the objective of psychology.
+
+If the objective of psychology is to control someone s behavior so that even_if a person is an organized whole that systems theory describes then a psychologist does_not need to pay_attention to the total existence of a person but only to some_aspect that the psychologists want to control.
+
+For_example in contemporary personality psychology it is claimed_that the Big_Five factors openness_conscientiousness extroversion_agreeableness neuroticism have_been discovered to define human personality.
+
+However if personality signifies the totality of a person it is clear that these factors are not_sufficient to understand the characteristic of a person s behaviors.
+
+Earlier theories of personality psychology counted religious attitude political_opinion citizenship and aesthetic concern as factors of the personality.
 ```
