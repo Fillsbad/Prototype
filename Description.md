@@ -1,9 +1,8 @@
 # Prototype
 This is a quick way of taking any number of .txt files from a folder (here about 13.5 GB), cleaning them, connecting the multi-word phrases in them and creating a W2V model from them.
 
-## Importing libraries and + the first cleaning process
+## Importing libraries
 ```# Importing neccessary libraries
-
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import WordNetLemmatizer
