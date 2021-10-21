@@ -107,7 +107,8 @@ However if personality signifies the totality of a person it is clear that these
 
 Earlier theories of personality psychology counted religious attitude political opinion citizenship and aesthetic concern as factors of the personality.
 ```
-## Connecting multi-word expressions in the text, based on the psychologty books collected
+## Connecting multi-word expressions in the text, based on the psychology books collected
+In this part I will not include the output examples as they are the cleaning process is the same as before
 #### Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
 ```with open("/home/fillsbad/Jupyter/Texts/Training/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Books", "*.txt"))
