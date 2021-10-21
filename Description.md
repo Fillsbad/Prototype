@@ -230,3 +230,16 @@ with open(filepath) as fp:
                 no_sw_sentences.append(sentence_to_wordlist(raw_sentence))
         print(no_sw_sentences, file = outfile)
 ```
+#### Output example:
+```['the problem psychology does_not seem so_much interest system theories persists machine paradigm linear_causal model kohler pointed_out ideas systems theories have_already been_introduced not_only domain engineering robotics but_also biology social_sciences long before']
+
+['one_reason psychology indifferent system theories would concern objective psychology']
+
+['if objective psychology control someone behavior even_if person organized whole systems theory describes psychologist does_not need pay_attention total existence person some_aspect psychologists want control']
+
+['for_example contemporary personality psychology claimed_that big_five factors openness_conscientiousness extroversion_agreeableness neuroticism have_been discovered define human personality']
+
+['however personality signifies totality person clear factors not_sufficient understand characteristic person behaviors']
+
+['earlier theories personality psychology counted religious attitude political_opinion citizenship aesthetic concern factors personality']
+```
