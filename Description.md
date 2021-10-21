@@ -244,7 +244,8 @@ with open(filepath) as fp:
 ['earlier theories personality psychology counted religious attitude political_opinion citizenship aesthetic concern factors personality']
 ```
 ## Training the W2V model (fine tunining the model is unfinished)
-```class MySentences(object):
+```
+class MySentences(object):
     def __init__(self, dirname):
         self.dirname = dirname
  
