@@ -58,3 +58,21 @@ Psychology is interventionistâit tries to intervene in a personâs life
 
 That is why psychology persists in causal explanation.
 ```
+## Deleting all characters from a text except a-z, A-Z, &Δ*öüóőúűáéäí-
+```filepath = '/home/fillsbad/Jupyter/Texts/streamed.txt'
+outfile = open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt', 'w')
+
+with open(filepath) as fp:
+    for line in tqdm(fp):
+        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+        tok_sentences = tokenizer.tokenize(line)
+        def sentence_cleaner(sent):
+            clean = re.sub("[^a-zA-Z&Δ*öüóőúűáéäí-]"," ", sent)
+            words = re.sub(' +', ' ', clean)
+            return words
+        clean_sentences = []
+        for cleanable_sentence in tok_sentences:
+            if len(cleanable_sentence) > 0:
+                clean_sentences.append(sentence_cleaner(cleanable_sentence))
+        print(' '.join(map(str, clean_sentences)), file = outfile)
+```
