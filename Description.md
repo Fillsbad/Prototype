@@ -35,7 +35,7 @@ import multiprocessing
                 print(t, file = out)
 ```
 ##### Output example:
-```The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out, while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics, but also in biology and social sciences long before.
+The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out, while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics, but also in biology and social sciences long before.
 One reason why psychology is indifferent in the system theories would concern the objective of psychology.
 If the objective of psychology is to control someoneâs behavior, so that even if a person is an organized whole that systems theory describes, then a psychologist does not need to pay attention to the total existence of a person, but only to some aspect that the psychologists want to control.
 For example, in contemporary personality psychology, it is claimed that âthe Big Fiveâ factorsâopenness, conscientiousness, extroversion, agreeableness, neuroticismâ have been discovered to define human personality.
