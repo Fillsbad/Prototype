@@ -81,7 +81,7 @@ However if personality signifies the totality of a person it is clear that these
 
 Earlier theories of personality psychology counted religious attitude political opinion citizenship and aesthetic concern as factors of the personality
 ```
-##### A little extra cleaning and putting a '.' at the end of every line/sentence
+#### A little extra cleaning and putting a '.' at the end of every line/sentence
 ```with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
     with open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt') as f:
         for li in tqdm(f):
@@ -137,7 +137,7 @@ with open(filepath) as fp:
                 clean_sentences.append(sentence_cleaner(cleanable_sentence))
         print(' '.join(map(str, clean_sentences)), file = outfile)
 ```
-##### (BOOK CLEANING) A little extra cleaning and putting a '.' at the end of every line/sentence
+#### (BOOK CLEANING) A little extra cleaning and putting a '.' at the end of every line/sentence
 ```with open('/home/fillsbad/Jupyter/Texts/cleaned_sci_th.txt', 'w') as out:
     with open('/home/fillsbad/Jupyter/Texts/cleaned_az.txt') as f:
         for li in tqdm(f):
