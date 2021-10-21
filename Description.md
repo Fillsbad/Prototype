@@ -207,3 +207,26 @@ However if personality signifies the totality of a person it is clear that these
 
 Earlier theories of personality psychology counted religious attitude political_opinion citizenship and aesthetic concern as factors of the personality.
 ```
+## Checking if all the multi-word expressions we need to connect are indeed connected
+This part is unfinished, in the probable case, that not every words we we want to connect are connected, we will have to connect the rest ourselves (this is a short and relatively easy process)
+## Finishing the cleaning process and transforming the text, so the W2V model can be created
+```filepath = '/home/fillsbad/Jupyter/Texts/normal_again.txt'
+outfile = open('/home/fillsbad/Jupyter/Texts/W2V/no_sw.txt', 'w')
+
+with open(filepath) as fp:
+    for line in tqdm(fp):
+        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+        raw_sentences = tokenizer.tokenize(line)               
+
+        stop_words = set(stopwords.words('english')) 
+        def sentence_to_wordlist(raw):
+            words = ' '.join(w for w in raw.split() if w not in stop_words)
+            words = words.replace('.','')
+            words = words.lower()
+            return words
+        no_sw_sentences = []
+        for raw_sentence in raw_sentences:
+            if len(raw_sentence) > 0:
+                no_sw_sentences.append(sentence_to_wordlist(raw_sentence))
+        print(no_sw_sentences, file = outfile)
+```
