@@ -169,3 +169,10 @@ with open(filepath) as fp:
 
 ['Newly emerging issues in the armed forces are also discussed including the role of terrorism psychological operations and advances in optimizing cognition on the battle eld'
 ```
+#### Creating a Phrases model based on the training corpus, then freezing and saving it (by doing this process twice as seen below, we connect not only the bigrams but also the 3 and sometimes the 4 word expressions as well)
+```sentences = Text8Corpus('/home/fillsbad/Jupyter/Texts/Training/processed_books.txt')
+bigram = Phrases(sentences, min_count=1, threshold=1, connector_words=ENGLISH_CONNECTOR_WORDS)
+trigram = Phrases(bigram[sentences], min_count=1, threshold=1, connector_words=ENGLISH_CONNECTOR_WORDS)
+frozen_model = trigram.freeze()
+frozen_model.save('/home/fillsbad/Jupyter/Texts/Training/frozen3.pkl')
+```
