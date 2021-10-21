@@ -1,7 +1,7 @@
 # W2V Prototype
 This is a quick way of taking any number of .txt files from a folder (here about 13.5 GB), cleaning them, connecting the multi-word expressions in them based on a number of books (here about 5.4 GB) and creating a W2V model from them.
 
-It is important to note that all subparts of this process are printed into separate files, so they can be checked individually. To show how ceratain parts look like, I included an example output after every block of code.
+It is important to note that all subparts of this process are printed into separate files, so they can be checked individually. To show how ceratain parts look like, I included an example output after many blocks of code.
 
 ## Importing libraries (I'll check later if all of these are indeed neccessary)
 ```
