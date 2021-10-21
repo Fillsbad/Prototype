@@ -26,7 +26,7 @@ from gensim.models.phrases import Phraser
 import multiprocessing
 ```
 ## First cleaning process
-#### Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
+#### Taking every .txt file from a folder and printing them into one file, where all the sentences are in different lines
 ```with open("/home/fillsbad/Jupyter/Texts/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Articles", "*.txt"))
     for file_path in tqdm(file_list):
@@ -109,7 +109,7 @@ Earlier theories of personality psychology counted religious attitude political 
 ```
 ## Connecting multi-word expressions in the text, based on the psychology books collected
 In this part I will not include the output examples as the cleaning process is the same as before
-#### (BOOK CLEANING) Taking every .txt file from a folder and prints them into one file, where all the sentences are in different lines
+#### (BOOK CLEANING) Taking every .txt file from a folder and printing them into one file, where all the sentences are in different lines
 ```with open("/home/fillsbad/Jupyter/Texts/Training/streamed.txt", 'w') as out:
     file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Books", "*.txt"))
     for file_path in tqdm(file_list):
