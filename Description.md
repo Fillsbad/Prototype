@@ -25,19 +25,7 @@ from gensim.models import Word2Vec
 from gensim.models.phrases import Phraser 
 import multiprocessing
 ```
-## First cleaning process
-#### Taking every .txt file from a folder and printing them into one file, where all the sentences are in different lines
-```
-with open("/home/fillsbad/Jupyter/Texts/streamed.txt", 'w') as out:
-    file_list = glob.glob(os.path.join(os.getcwd(), "/home/fillsbad/Jupyter/Texts/Articles", "*.txt"))
-    for file_path in tqdm(file_list):
-        with codecs.open(file_path, 'r', encoding = 'latin1') as f_input:
-            file = f_input.read()
-            tokens = nltk.sent_tokenize(file.replace('\n', ' '))
-            for t in tokens:
-                print(t, file = out)
-```
-##### Output example:
+## Text example after initial reading (every sentence in new line)
 ```
 The problem is why psychology does not seem to have so much interest in system theories and why it persists in the machine paradigm or the linear causal model as Kohler pointed out, while the ideas of systems theories have already been introduced not only in the domain of engineering and robotics, but also in biology and social sciences long before.
 
